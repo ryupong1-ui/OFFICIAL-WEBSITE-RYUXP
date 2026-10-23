@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ติดต่อ RYU XP ผ่าน Email และช่องทางโซเชียลมีเดีย">
+<title>Contact — RYU XP</title>
+
+<style>
+:root{--bg:#f8fafc;--text:#172033;--muted:#687386;--accent:#6658e8;--line:#e6e9f0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.nav{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#ffffffed;position:sticky;top:0;border-bottom:1px solid var(--line);z-index:5}
+.logo{font-size:24px;font-weight:900}
+.logo span,.active{color:var(--accent)}
+.links{display:flex;gap:24px;align-items:center;font-size:14px}
+.links a:hover{color:var(--accent)}
+.lang{border:1px solid var(--line);padding:6px 12px;border-radius:20px}
+.menu{display:none;background:none;border:0;font-size:24px}
+.hero{padding:85px 8% 55px;min-height:320px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;background:radial-gradient(ellipse at 80% 20%,#e7e4ff,transparent 42%)}
+.eyebrow{color:var(--accent);font-size:13px;font-weight:800;letter-spacing:2px}
+.hero h1{font-size:clamp(42px,6vw,64px);line-height:1.12;letter-spacing:-2px;margin:16px 0}
+.hero h1 span{color:var(--accent)}
+p{color:var(--muted)}
+.hero p{font-size:18px}
+.visual{min-height:230px;border-radius:30px;background:linear-gradient(145deg,#7468ed,#aaa3ff,#e0ddff);display:grid;place-items:center;animation:float 5s ease-in-out infinite}
+.orb{width:150px;height:150px;border-radius:45px;background:#ffffff45;border:1px solid #ffffffaa;display:grid;place-items:center;font-size:48px;color:white;transform:rotate(-10deg)}
+@keyframes float{50%{transform:translateY(-10px)}}
+.content{padding:55px 8% 75px}
+.head{text-align:center;margin:0 auto 35px;max-width:650px}
+.head h2{font-size:38px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:27px;border:1px solid var(--line);border-radius:20px;background:white;transition:.25s;display:flex;flex-direction:column;min-height:190px}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px 35px #1720330c;border-color:#c9c3ff}
+.icon{font-size:28px;color:var(--accent)}
+.card h3{margin:12px 0 4px}
+.card p{margin:0 0 14px;font-size:14px}
+.card .arrow{color:var(--accent);font-weight:800;margin-top:auto}
+.footer{padding:25px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.reveal{opacity:0;transform:translateY(16px);transition:.65s}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:760px){
+.nav{height:68px;padding:0 5%}
+.menu{display:block}
+.links{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 6%;background:white;flex-direction:column;align-items:flex-start}
+.links.open{display:flex}
+.hero{grid-template-columns:1fr;padding:55px 6%}
+.visual{min-height:190px}
+.orb{width:120px;height:120px;font-size:42px}
+.content{padding:45px 6%}
+.grid{grid-template-columns:1fr}
+.card{min-height:155px}
+.footer{padding:25px 6%}
+}
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+<header class="nav">
+<a class="logo" href="/th/">RYU <span>XP</span></a>
+<button class="menu" aria-label="เปิดเมนู" aria-expanded="false">☰</button>
+<nav class="links">
+<a href="/th/">หน้าแรก</a>
+<a href="/th/about">เกี่ยวกับ</a>
+<a href="/th/care">Website in Care</a>
+<a class="active" href="/th/contact">ติดต่อเรา</a>
+<a class="lang" href="/en/contact">EN ↗</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div class="reveal">
+<div class="eyebrow">LET'S CONNECT</div>
+<h1>ติดต่อ <span>RYU XP.</span></h1>
+<p>ติดตามเราและติดต่อผ่านช่องทางออนไลน์ที่คุณสะดวก</p>
+</div>
+<div class="visual"><div class="orb">RX</div></div>
+</section>
+
+<section class="content">
+<div class="head reveal">
+<div class="eyebrow">GET IN TOUCH</div>
+<h2>ช่องทางติดต่อ</h2>
+<p>เลือกช่องทางที่คุณต้องการ แล้วมาพูดคุยกัน</p>
+</div>
+
+<div class="grid">
+<a class="card reveal" href="mailto:hello@ryuxp.online">
+<div class="icon">✉</div>
+<h3>Email</h3>
+<p>ส่งอีเมลหาเราโดยตรง</p>
+<span class="arrow">Contact via Email ↗</span>
+</a>
+
+<a class="card reveal" href="YOUR_FACEBOOK_URL" target="_blank" rel="noopener noreferrer">
+<div class="icon">f</div>
+<h3>Facebook</h3>
+<p>ติดตามข่าวสารและอัปเดต</p>
+<span class="arrow">Visit Facebook ↗</span>
+</a>
+
+<a class="card reveal" href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer">
+<div class="icon">◎</div>
+<h3>Instagram</h3>
+<p>ติดตามรูปภาพและเรื่องราวของเรา</p>
+<span class="arrow">Visit Instagram ↗</span>
+</a>
+
+<a class="card reveal" href="YOUR_YOUTUBE_URL" target="_blank" rel="noopener noreferrer">
+<div class="icon">▶</div>
+<h3>YouTube</h3>
+<p>รับชมวิดีโอจาก RYU XP</p>
+<span class="arrow">Visit YouTube ↗</span>
+</a>
+
+<a class="card reveal" href="YOUR_TIKTOK_URL" target="_blank" rel="noopener noreferrer">
+<div class="icon">♪</div>
+<h3>TikTok</h3>
+<p>ติดตามคลิปและคอนเทนต์ใหม่ ๆ</p>
+<span class="arrow">Visit TikTok ↗</span>
+</a>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<span>© <span id="year"></span> RYU XP. สงวนลิขสิทธิ์</span>
+<span>Designed with care.</span>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const m=document.querySelector(".menu"),n=document.querySelector(".links");
+m.onclick=()=>{let o=n.classList.toggle("open");m.setAttribute("aria-expanded",o);m.textContent=o?"✕":"☰"};
+const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");ob.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(e=>ob.observe(e));
+</script>
+</body>
+</html>
