@@ -7,11 +7,29 @@
     }
   ],
   "rewrites": [
-    { "source": "/th/about", "destination": "/th/about.html" },
-    { "source": "/th/care", "destination": "/th/care.html" },
-    { "source": "/th/contact", "destination": "/th/contact.html" },
-    { "source": "/en/about", "destination": "/en/about.html" },
-    { "source": "/en/care", "destination": "/en/care.html" },
-    { "source": "/en/contact", "destination": "/en/contact.html" },
+    {
+      "source": "/th/about",
+      "destination": "/th/about.html"
+    },
+    {
+      "source": "/th/care",
+      "destination": "/th/care.html"
+    },
+    {
+      "source": "/th/contact",
+      "destination": "/th/contact.html"
+    },
+    {
+      "source": "/en/about",
+      "destination": "/en/about.html"
+    },
+    {
+      "source": "/en/care",
+      "destination": "/en/care.html"
+    },
+    {
+      "source": "/en/contact",
+      "destination": "/en/contact.html"
+    }
   ]
 }
