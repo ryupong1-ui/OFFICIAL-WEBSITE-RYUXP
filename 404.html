@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8fafc">
+<meta name="description" content="Page not found — RYU XP">
+<title>404 — Page Not Found | RYU XP</title>
+
+<style>
+:root{--bg:#f8fafc;--text:#172033;--muted:#687386;--accent:#6658e8;--line:#e6e9f0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+.nav{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#ffffffed;position:sticky;top:0;border-bottom:1px solid var(--line);z-index:5}
+.logo{font-size:24px;font-weight:900}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:24px;align-items:center;font-size:14px}
+.links a:hover{color:var(--accent)}
+.lang{border:1px solid var(--line);padding:6px 12px;border-radius:20px}
+.menu{display:none;background:none;border:0;font-size:24px;cursor:pointer}
+main{flex:1;display:grid;place-items:center;padding:65px 6%;background:radial-gradient(ellipse at 50% 25%,#e7e4ff,transparent 48%)}
+.error{text-align:center;max-width:650px;animation:fadeUp .7s ease both}
+.eyebrow{color:var(--accent);font-size:13px;font-weight:800;letter-spacing:2px}
+.code{font-size:clamp(110px,25vw,200px);font-weight:900;letter-spacing:-10px;line-height:1.1;margin:10px 0;color:var(--accent);text-shadow:8px 8px 0 #e7e4ff}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.3;margin:18px 0 10px}
+p{color:var(--muted);margin:0 auto 25px;max-width:480px}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--accent);color:white;padding:12px 22px;border-radius:12px;font-weight:700;transition:.25s;border:1px solid var(--accent)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px #6658e833}
+.alt{background:white;color:var(--text);border-color:var(--line)}
+.alt:hover{border-color:var(--accent)}
+.mark{width:74px;height:74px;border:1px solid #dcd6ff;background:#ffffffaa;border-radius:24px;display:grid;place-items:center;margin:0 auto 22px;color:var(--accent);font-size:30px;animation:float 4s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{50%{transform:translateY(-7px) rotate(3deg)}}
+.footer{padding:25px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;color:var(--muted);font-size:13px;background:#fff}
+@media(max-width:760px){.nav{height:68px;padding:0 5%}.menu{display:block}.links{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 6%;background:white;flex-direction:column;align-items:flex-start}.links.open{display:flex}.code{letter-spacing:-5px}.footer{padding:25px 6%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+<a class="logo" href="/th/">RYU <span>XP</span></a>
+<button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+<nav class="links">
+<a href="/th/">หน้าแรก</a>
+<a href="/th/about">เกี่ยวกับ</a>
+<a href="/th/care">เว็บไซต์ในเครือ</a>
+<a href="/th/contact">ติดต่อ</a>
+<a class="lang" href="/en/">EN ↗</a>
+</nav>
+</header>
+
+<main>
+<section class="error">
+<div class="mark">RX</div>
+<div class="eyebrow">OOPS! PAGE NOT FOUND</div>
+<div class="code">404</div>
+<h1>We couldn't find that page.</h1>
+<p>Sorry, the page may have been moved, removed, or never existed. Try returning home or going back to the previous page.</p>
+<div class="actions">
+<a class="btn" href="/th/">กลับหน้าแรก ↗</a>
+<a class="btn alt" href="javascript:history.back()">← ย้อนกลับ</a>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<span>© <span id="year"></span> RYU XP. All rights reserved.</span>
+<span>Designed with care.</span>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const m=document.querySelector(".menu"),n=document.querySelector(".links");
+m.onclick=()=>{let o=n.classList.toggle("open");m.setAttribute("aria-expanded",o);m.textContent=o?"✕":"☰"};
+</script>
+</body>
+</html>
