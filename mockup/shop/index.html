@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>RYU STORE — Premium Tech</title>
+<style>
+:root {
+  --bg:#080808;
+  --panel:#121212;
+  --line:#292929;
+  --text:#f7f7f7;
+  --muted:#999;
+  --accent:#fff;
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button,input,textarea { font:inherit }
+button { cursor:pointer }
+a { color:inherit;text-decoration:none }
+header {
+  position:sticky;top:0;z-index:10;
+  background:rgba(8,8,8,.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  max-width:1200px;margin:auto;padding:18px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:15px;
+}
+.logo { font-weight:900;letter-spacing:3px;font-size:20px }
+.logo span { color:#999 }
+.nav-right { display:flex;align-items:center;gap:18px }
+.cart-btn,.btn {
+  border:1px solid var(--line);background:#fff;color:#000;
+  padding:12px 17px;border-radius:7px;font-weight:700;
+}
+.cart-btn { background:#151515;color:#fff }
+main { max-width:1200px;margin:auto;padding:0 22px }
+.hero {
+  min-height:390px;display:flex;flex-direction:column;
+  justify-content:center;padding:65px 0;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow { color:#aaa;letter-spacing:4px;font-size:12px }
+h1 { font-size:clamp(44px,9vw,92px);line-height:.98;letter-spacing:-4px;margin:20px 0 }
+.hero p { color:#aaa;max-width:480px;line-height:1.8 }
+.btn { display:inline-block;margin-top:15px }
+.section-head {
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;margin:38px 0 22px;
+}
+.section-head h2 { margin:0;font-size:25px }
+#search {
+  width:min(100%,260px);padding:12px;
+  background:#121212;color:#fff;border:1px solid var(--line);
+  border-radius:7px;outline:none;
+}
+.products {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+}
+.card {
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;transition:.25s;
+}
+.card:hover { transform:translateY(-5px);border-color:#777 }
+.product-art {
+  height:205px;display:grid;place-items:center;
+  background:radial-gradient(ellipse at center,#303030,#111 70%);
+  font-size:68px;
+}
+.card-body { padding:18px }
+.card h3 { margin:0 0 8px;font-size:17px }
+.description { color:var(--muted);font-size:13px;min-height:36px }
+.price-row { display:flex;justify-content:space-between;align-items:center;gap:8px }
+.price { font-size:19px;font-weight:800 }
+.add {
+  background:#fff;color:#000;border:0;border-radius:6px;
+  padding:10px 12px;font-weight:700;
+}
+.panel {
+  margin:55px 0;padding:24px;
+  border:1px solid var(--line);border-radius:12px;background:#101010;
+}
+.panel h2 { margin-top:0 }
+.cart-row {
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:15px 0;border-bottom:1px solid var(--line);
+}
+.cart-row small { color:#aaa }
+.quantity { display:flex;align-items:center;gap:10px }
+.quantity button {
+  background:#222;color:white;border:1px solid #444;
+  border-radius:5px;width:30px;height:30px;
+}
+.remove { color:#aaa;background:none;border:0;padding:5px }
+.total {
+  display:flex;justify-content:space-between;
+  padding-top:20px;font-size:21px;font-weight:800;
+}
+form { display:grid;gap:13px }
+form label { display:grid;gap:7px;color:#ccc;font-size:13px }
+form input,form textarea {
+  width:100%;background:#080808;color:#fff;
+  border:1px solid #333;border-radius:7px;padding:13px;
+  outline:none;
+}
+form input:focus,form textarea:focus { border-color:#aaa }
+form textarea { min-height:90px;resize:vertical }
+.payment {
+  border:1px solid #333;border-radius:7px;padding:15px;
+  color:#ddd;background:#161616;
+}
+.submit {
+  background:#fff;color:#000;border:0;border-radius:7px;
+  padding:15px;font-weight:800;
+}
+.status { color:#aaa;font-size:13px;line-height:1.7 }
+footer {
+  margin-top:70px;border-top:1px solid var(--line);
+  padding:30px 22px;text-align:center;color:#777;font-size:12px;
+}
+.toast {
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#fff;color:#000;padding:13px 20px;border-radius:8px;
+  z-index:30;display:none;max-width:90%;text-align:center;
+}
+@media(max-width:760px) {
+  .products { grid-template-columns:repeat(2,minmax(0,1fr));gap:10px }
+  .product-art { height:145px;font-size:50px }
+  .card-body { padding:12px }
+  .card h3 { font-size:14px }
+  .price-row { align-items:flex-start;flex-direction:column }
+  .add { width:100% }
+  h1 { letter-spacing:-2px }
+  .hero { min-height:320px }
+  .nav { padding:14px }
+  main { padding:0 14px }
+  .section-head { align-items:flex-start;flex-direction:column }
+  #search { width:100% }
+  .panel { padding:16px }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#">RYU<span> STORE.</span></a>
+    <div class="nav-right">
+      <a href="#products">สินค้า</a>
+      <button class="cart-btn" onclick="goCart()">
+        ตะกร้า <span id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">DESIGNED FOR EVERYDAY</div>
+    <h1>TECH.<br>SIMPLIFIED.</h1>
+    <p>เลือกเทคโนโลยีที่ใช่ ในดีไซน์เรียบง่าย พร้อมประสบการณ์ช้อปปิ้งที่ไม่ซับซ้อน</p>
+    <div><a class="btn" href="#products">เลือกซื้อสินค้า ↗</a></div>
+  </section>
+
+  <section id="products">
+    <div class="section-head">
+      <h2>สินค้าทั้งหมด</h2>
+      <input id="search" type="search" placeholder="ค้นหาสินค้า..."
+        oninput="renderProducts()">
+    </div>
+    <div class="products" id="productGrid"></div>
+  </section>
+
+  <section class="panel" id="cart">
+    <h2>ตะกร้าสินค้า</h2>
+    <div id="cartItems"></div>
+    <div class="total"><span>ยอดรวม</span><span id="total">฿0</span></div>
+    <p class="status">ค่าจัดส่งอาจมีเพิ่มเติมตามเงื่อนไขของร้าน</p>
+  </section>
+
+  <section class="panel" id="checkout">
+    <h2>ข้อมูลจัดส่ง</h2>
+    <form id="orderForm">
+      <label>ชื่อผู้รับ
+        <input name="name" required maxlength="100" placeholder="ชื่อและนามสกุล">
+      </label>
+      <label>เบอร์โทรศัพท์
+        <input name="phone" required maxlength="20" type="tel"
+          placeholder="08X-XXX-XXXX">
+      </label>
+      <label>ที่อยู่จัดส่ง
+        <textarea name="address" required maxlength="1000"
+          placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+      </label>
+      <label>หมายเหตุ (ถ้ามี)
+        <textarea name="note" maxlength="500" placeholder="รายละเอียดเพิ่มเติม"></textarea>
+      </label>
+      <div class="payment">วิธีชำระเงิน: เก็บเงินปลายทาง (COD)</div>
+      <button class="submit" id="submitBtn" type="submit">ยืนยันคำสั่งซื้อ</button>
+      <div class="status" id="orderStatus" aria-live="polite">
+        ตรวจสอบสินค้าและข้อมูลก่อนยืนยันคำสั่งซื้อ
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="logo">RYU STORE.</div>
+  <p>PREMIUM TECH · SIMPLE SHOPPING</p>
+  <p>© <span id="year"></span> RYU STORE. All rights reserved.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// เปลี่ยน URL นี้เป็น Discord Webhook ของคุณ
+// คำเตือน: URL นี้จะมองเห็นได้จากผู้เข้าชมทุกคน
+const DISCORD_WEBHOOK_URL = "PASTE_YOUR_DISCORD_WEBHOOK_URL_HERE";
+
+const products = [
+  {id:"p001",name:"Wireless Headphones",description:"หูฟังไร้สาย ดีไซน์มินิมอล",price:1290,icon:"🎧"},
+  {id:"p002",name:"Minimal Keyboard",description:"คีย์บอร์ดสำหรับโต๊ะทำงาน",price:1890,icon:"⌨️"},
+  {id:"p003",name:"Studio Desk Lamp",description:"โคมไฟตั้งโต๊ะ สไตล์โมเดิร์น",price:790,icon:"💡"},
+  {id:"p004",name:"Everyday Backpack",description:"กระเป๋าสำหรับการเดินทาง",price:1590,icon:"🎒"},
+  {id:"p005",name:"USB-C Hub",description:"อุปกรณ์เสริมสำหรับ USB-C",price:990,icon:"🔌"},
+  {id:"p006",name:"Portable Speaker",description:"ลำโพงพกพาสำหรับทุกวัน",price:1490,icon:"🔊"}
+];
+
+const cart = {};
+const money = n => "฿" + n.toLocaleString("th-TH");
+const byId = id => document.getElementById(id);
+
+byId("year").textContent = new Date().getFullYear();
+
+function renderProducts() {
+  const q = byId("search").value.trim().toLowerCase();
+  const list = products.filter(p =>
+    (p.name + " " + p.description).toLowerCase().includes(q)
+  );
+
+  byId("productGrid").innerHTML = list.length ? list.map(p => `
+    <article class="card">
+      <div class="product-art">${p.icon}</div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <div class="description">${p.description}</div>
+        <div class="price-row">
+          <span class="price">${money(p.price)}</span>
+          <button class="add" onclick="addToCart('${p.id}')">เพิ่มลงตะกร้า +</button>
+        </div>
+      </div>
+    </article>
+  `).join("") : "<p>ไม่พบสินค้าที่ค้นหา</p>";
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  toast("เพิ่มสินค้าลงตะกร้าแล้ว");
+}
+
+function changeQty(id, delta) {
+  cart[id] = (cart[id] || 0) + delta;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+
+function renderCart() {
+  const entries = products.filter(p => cart[p.id]);
+  const count = Object.values(cart).reduce((a,b) => a+b, 0);
+  const total = entries.reduce((sum,p) => sum + p.price*cart[p.id], 0);
+
+  byId("cartCount").textContent = count;
+  byId("total").textContent = money(total);
+
+  byId("cartItems").innerHTML = entries.length ? entries.map(p => `
+    <div class="cart-row">
+      <div>
+        <strong>${p.name}</strong><br>
+        <small>${money(p.price)} / ชิ้น</small>
+      </div>
+      <div class="quantity">
+        <button type="button" onclick="changeQty('${p.id}',-1)">−</button>
+        <span>${cart[p.id]}</span>
+        <button type="button" onclick="changeQty('${p.id}',1)">+</button>
+      </div>
+    </div>
+  `).join("") : '<p class="status">ยังไม่มีสินค้าในตะกร้า</p>';
+}
+
+function goCart() {
+  byId("cart").scrollIntoView({behavior:"smooth"});
+}
+
+function toast(message) {
+  const el = byId("toast");
+  el.textContent = message;
+  el.style.display = "block";
+  setTimeout(() => el.style.display = "none", 2600);
+}
+
+byId("orderForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const entries = products.filter(p => cart[p.id]);
+  if (!entries.length) {
+    toast("กรุณาเลือกสินค้าก่อนสั่งซื้อ");
+    goCart();
+    return;
+  }
+
+  if (!DISCORD_WEBHOOK_URL.startsWith("https://discord.com/api/webhooks/") &&
+      !DISCORD_WEBHOOK_URL.startsWith("https://discordapp.com/api/webhooks/")) {
+    byId("orderStatus").textContent =
+      "กรุณาใส่ Discord Webhook URL ที่ถูกต้องในโค้ดก่อนทดสอบ";
+    return;
+  }
+
+  const form = new FormData(event.currentTarget);
+  const customer = {
+    name: String(form.get("name")).trim(),
+    phone: String(form.get("phone")).trim(),
+    address: String(form.get("address")).trim(),
+    note: String(form.get("note")).trim()
+  };
+
+  if (!customer.name || !customer.phone || !customer.address) {
+    toast("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  const orderId = "RYU-" + Date.now().toString().slice(-8);
+  const total = entries.reduce((sum,p) => sum + p.price*cart[p.id], 0);
+  const itemText = entries.map(p =>
+    `${p.name} × ${cart[p.id]} = ${money(p.price*cart[p.id])}`
+  ).join("\n");
+
+  const payload = {
+    username: "RYU STORE Orders",
+    allowed_mentions: {parse: []},
+    embeds: [{
+      title: "🛍️ คำสั่งซื้อใหม่",
+      color: 5793266,
+      fields: [
+        {name:"หมายเลขคำสั่งซื้อ",value:orderId,inline:true},
+        {name:"วิธีชำระเงิน",value:"เก็บเงินปลายทาง (COD)",inline:true},
+        {name:"ผู้รับ",value:customer.name.slice(0,1024)},
+        {name:"เบอร์โทรศัพท์",value:customer.phone.slice(0,1024)},
+        {name:"ที่อยู่จัดส่ง",value:customer.address.slice(0,1024)},
+        {name:"รายการสินค้า",value:itemText.slice(0,1024)},
+        {name:"หมายเหตุ",value:(customer.note || "-").slice(0,1024)},
+        {name:"ยอดรวม",value:money(total),inline:true}
+      ],
+      footer:{text:"RYU STORE"}
+    }]
+  };
+
+  const btn = byId("submitBtn");
+  btn.disabled = true;
+  btn.textContent = "กำลังส่งคำสั่งซื้อ...";
+  byId("orderStatus").textContent = "กำลังติดต่อ Discord...";
+
+  try {
+    const response = await fetch(DISCORD_WEBHOOK_URL, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error("Discord ตอบกลับ HTTP " + response.status);
+    }
+
+    Object.keys(cart).forEach(id => delete cart[id]);
+    renderCart();
+    event.currentTarget.reset();
+    byId("orderStatus").textContent =
+      "ส่งคำสั่งซื้อแล้ว หมายเลข " + orderId +
+      " โปรดรอร้านติดต่อกลับเพื่อยืนยันออเดอร์";
+    toast("ส่งคำสั่งซื้อเรียบร้อย");
+  } catch (error) {
+    byId("orderStatus").textContent =
+      "ส่งคำสั่งซื้อไม่สำเร็จ: " + error.message +
+      " อาจเกิดจากการตั้งค่า Discord หรือ CORS";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "ยืนยันคำสั่งซื้อ";
+  }
+});
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
