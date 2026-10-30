@@ -1,81 +1,571 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8fafc">
-<meta name="description" content="Page not found — RYU XP">
-<title>404 — Page Not Found | RYU XP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090d">
+  <title>404 — Page Not Found | Ryu XP</title>
+  <meta name="description" content="The page you are looking for could not be found. Return to Ryu XP homepage.">
 
-<style>
-:root{--bg:#f8fafc;--text:#172033;--muted:#687386;--accent:#6658e8;--line:#e6e9f0}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
-a{color:inherit;text-decoration:none}
-.nav{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#ffffffed;position:sticky;top:0;border-bottom:1px solid var(--line);z-index:5}
-.logo{font-size:24px;font-weight:900}
-.logo span{color:var(--accent)}
-.links{display:flex;gap:24px;align-items:center;font-size:14px}
-.links a:hover{color:var(--accent)}
-.lang{border:1px solid var(--line);padding:6px 12px;border-radius:20px}
-.menu{display:none;background:none;border:0;font-size:24px;cursor:pointer}
-main{flex:1;display:grid;place-items:center;padding:65px 6%;background:radial-gradient(ellipse at 50% 25%,#e7e4ff,transparent 48%)}
-.error{text-align:center;max-width:650px;animation:fadeUp .7s ease both}
-.eyebrow{color:var(--accent);font-size:13px;font-weight:800;letter-spacing:2px}
-.code{font-size:clamp(110px,25vw,200px);font-weight:900;letter-spacing:-10px;line-height:1.1;margin:10px 0;color:var(--accent);text-shadow:8px 8px 0 #e7e4ff}
-h1{font-size:clamp(27px,5vw,40px);line-height:1.3;margin:18px 0 10px}
-p{color:var(--muted);margin:0 auto 25px;max-width:480px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;background:var(--accent);color:white;padding:12px 22px;border-radius:12px;font-weight:700;transition:.25s;border:1px solid var(--accent)}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px #6658e833}
-.alt{background:white;color:var(--text);border-color:var(--line)}
-.alt:hover{border-color:var(--accent)}
-.mark{width:74px;height:74px;border:1px solid #dcd6ff;background:#ffffffaa;border-radius:24px;display:grid;place-items:center;margin:0 auto 22px;color:var(--accent);font-size:30px;animation:float 4s ease-in-out infinite}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{50%{transform:translateY(-7px) rotate(3deg)}}
-.footer{padding:25px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;color:var(--muted);font-size:13px;background:#fff}
-@media(max-width:760px){.nav{height:68px;padding:0 5%}.menu{display:block}.links{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 6%;background:white;flex-direction:column;align-items:flex-start}.links.open{display:flex}.code{letter-spacing:-5px}.footer{padding:25px 6%}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #08090d;
+      --text: #f5f7ff;
+      --muted: #969bad;
+      --cyan: #62e6ff;
+      --blue: #7778ff;
+      --glass: rgba(255,255,255,.055);
+      --border: rgba(255,255,255,.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(65,76,165,.14), transparent 48%),
+        var(--bg);
+      font-family: Inter, "Noto Sans Thai", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .17;
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientMove 12s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      background: #087dff;
+      top: 5%;
+      left: -180px;
+    }
+
+    .ambient.two {
+      background: #813cff;
+      right: -180px;
+      bottom: 0;
+      animation-delay: -6s;
+    }
+
+    @keyframes ambientMove {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(80px, -40px) scale(1.2); }
+    }
+
+    header {
+      position: relative;
+      z-index: 5;
+      width: min(1180px, calc(100% - 48px));
+      height: 86px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -1px;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 13px;
+      background: linear-gradient(145deg, #202a40, #10121c);
+      box-shadow: inset 0 1px rgba(255,255,255,.12), 0 0 25px #4c68ff1a;
+      color: var(--cyan);
+      font-size: 16px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #aeb4c7;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #66edac;
+      box-shadow: 0 0 12px #66edac;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .35; box-shadow: 0 0 2px #66edac; }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100vh - 156px);
+      display: grid;
+      place-items: center;
+      padding: 70px 22px 90px;
+    }
+
+    .content {
+      width: min(760px, 100%);
+      text-align: center;
+      animation: appear .9s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: rgba(255,255,255,.035);
+      color: #c6cbe0;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .eyebrow span {
+      color: var(--cyan);
+    }
+
+    .error-number {
+      position: relative;
+      display: inline-block;
+      font-size: clamp(130px, 25vw, 250px);
+      font-weight: 900;
+      line-height: .98;
+      letter-spacing: -.095em;
+      padding-right: .095em;
+      color: transparent;
+      background: linear-gradient(
+        180deg,
+        #ffffff 4%,
+        #b8d8ff 38%,
+        #7084ff 72%,
+        #323b81 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 0 45px rgba(90,130,255,.14));
+      user-select: none;
+      animation: numberFloat 6s ease-in-out infinite;
+    }
+
+    .error-number::after {
+      content: "404";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      color: #6479ff;
+      filter: blur(38px);
+      opacity: .28;
+    }
+
+    @keyframes numberFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    h1 {
+      margin-top: 26px;
+      font-size: clamp(27px, 5vw, 43px);
+      font-weight: 800;
+      letter-spacing: -1.7px;
+      line-height: 1.3;
+    }
+
+    h1 .gradient {
+      color: transparent;
+      background: linear-gradient(100deg, var(--cyan), #9e9aff 75%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .description {
+      max-width: 510px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 23px;
+      border-radius: 15px;
+      text-decoration: none;
+      font: 600 13px Inter, "Noto Sans Thai", sans-serif;
+      transition: transform .25s, background .25s, box-shadow .25s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #080b14;
+      background: linear-gradient(115deg, #a1f1ff, #9d9cff);
+      box-shadow: 0 8px 32px rgba(105,148,255,.19);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(105,148,255,.32);
+    }
+
+    .btn-secondary {
+      color: #f1f3ff;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      width: min(430px, 85%);
+      height: 1px;
+      margin: 42px auto 25px;
+      background: linear-gradient(90deg, transparent, #ffffff22, transparent);
+    }
+
+    .help {
+      color: #777e94;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .help a {
+      color: #b3c8ff;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .help a:hover {
+      color: var(--cyan);
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      min-height: 70px;
+      width: min(1180px, calc(100% - 48px));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      color: #676d80;
+      font-size: 11px;
+    }
+
+    .footer-brand {
+      color: #a8aec2;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-right a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        width: calc(100% - 34px);
+        height: 72px;
+      }
+
+      .brand { font-size: 18px; }
+      .brand-icon { width: 34px; height: 34px; border-radius: 11px; }
+      .status { font-size: 9px; letter-spacing: 1px; }
+
+      main {
+        min-height: calc(100svh - 140px);
+        padding: 60px 20px 65px;
+      }
+
+      .error-number {
+        font-size: clamp(125px, 39vw, 190px);
+      }
+
+      h1 { margin-top: 22px; letter-spacing: -1px; }
+      .description { font-size: 14px; }
+      .actions { flex-direction: column; }
+      .btn { width: min(310px, 100%); }
+      .divider { margin-top: 34px; }
+      
+      footer {
+        width: calc(100% - 34px);
+        padding: 20px 0;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header class="nav">
-<a class="logo" href="/th/">RYU <span>XP</span></a>
-<button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
-<nav class="links">
-<a href="/th/">หน้าแรก</a>
-<a href="/th/about">เกี่ยวกับ</a>
-<a href="/th/care">Website in Care</a>
-<a href="/th/contact">ติดต่อเรา</a>
-<a class="lang" href="/en/">EN ↗</a>
-</nav>
-</header>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="ambient one"></div>
+  <div class="ambient two"></div>
 
-<main>
-<section class="error">
-<div class="mark">RX</div>
-<div class="eyebrow">OOPS! PAGE NOT FOUND</div>
-<div class="code">404</div>
-<h1>We couldn't find that page.</h1>
-<p>Sorry, the page may have been moved, removed, or never existed. Try returning home or going back to the previous page.</p>
-<div class="actions">
-<a class="btn" href="/th/">กลับหน้าแรก ↗</a>
-<a class="btn alt" href="javascript:history.back()">← ย้อนกลับ</a>
-</div>
-</section>
-</main>
+  <header>
+    <a class="brand" href="/" aria-label="Ryu XP Homepage">
+      <span class="brand-icon">RX</span>
+      <span>Ryu XP<span style="color:#62e6ff">.</span></span>
+    </a>
 
-<footer class="footer">
-<span>© <span id="year"></span> RYU XP. All rights reserved.</span>
-<span>Designed with care.</span>
-</footer>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>System Online</span>
+    </div>
+  </header>
 
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-const m=document.querySelector(".menu"),n=document.querySelector(".links");
-m.onclick=()=>{let o=n.classList.toggle("open");m.setAttribute("aria-expanded",o);m.textContent=o?"✕":"☰"};
-</script>
+  <main>
+    <section class="content">
+      <div class="eyebrow">
+        <span>✦</span> ERROR CODE <span>404</span>
+      </div>
+
+      <div class="error-number" aria-label="404">404</div>
+
+      <h1>
+        Oops! <span class="gradient">หลงทางแล้วหรือเปล่า?</span>
+      </h1>
+
+      <p class="description">
+        หน้าที่คุณกำลังมองหาอาจถูกย้าย ลบ หรือไม่มีอยู่ในเว็บไซต์นี้
+        ไม่ต้องกังวล คุณสามารถกลับไปเริ่มต้นใหม่ได้ที่หน้าแรก
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 10 9-7 9 7"/>
+            <path d="M5 9v11h14V9"/>
+            <path d="M9 20v-7h6v7"/>
+          </svg>
+          กลับหน้าหลัก
+        </a>
+
+        <button class="btn btn-secondary" id="backButton" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"/>
+            <path d="M19 12H5"/>
+          </svg>
+          ย้อนกลับหน้าก่อน
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="help">
+        ยังพบปัญหาอยู่ใช่ไหม?
+        <a href="mailto:info@ryuxp.online">ติดต่อทีมงาน Ryu XP</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-brand">RYU XP © <span id="year"></span></span>
+    <div class="footer-right">
+      <a href="/">Home</a>
+      <a href="/th/about">About</a>
+      <a href="/th/contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Back button with safe fallback
+    document.getElementById("backButton").addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
+      } else {
+        window.location.href = "/";
+      }
+    });
+
+    // Animated stars / particles
+    (() => {
+      const canvas = document.getElementById("stars");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      let width = 0;
+      let height = 0;
+      let particles = [];
+      let animationFrame;
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = Math.min(
+          85,
+          Math.max(25, Math.floor(width * height / 15000))
+        );
+
+        particles = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.4 + .3,
+          alpha: Math.random() * .5 + .1,
+          speed: Math.random() * .18 + .04,
+          phase: Math.random() * Math.PI * 2
+        }));
+
+        draw(true);
+      }
+
+      function draw(staticFrame = false) {
+        ctx.clearRect(0, 0, width, height);
+
+        for (const p of particles) {
+          const flicker = reducedMotion || staticFrame
+            ? 1
+            : .65 + Math.sin(Date.now() * .001 + p.phase) * .35;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(175,205,255,${p.alpha * flicker})`;
+          ctx.fill();
+
+          if (!staticFrame && !reducedMotion) {
+            p.y -= p.speed;
+            if (p.y < -5) {
+              p.y = height + 5;
+              p.x = Math.random() * width;
+            }
+          }
+        }
+
+        if (!staticFrame && !reducedMotion) {
+          animationFrame = requestAnimationFrame(() => draw());
+        }
+      }
+
+      window.addEventListener("resize", () => {
+        cancelAnimationFrame(animationFrame);
+        resize();
+        if (!reducedMotion) draw();
+      });
+
+      resize();
+      if (!reducedMotion) draw();
+    })();
+  </script>
 </body>
 </html>
