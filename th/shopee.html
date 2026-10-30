@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070910">
+<title>Shopee Store — Ryu XP®</title>
+<style>
+:root{--bg:#070910;--cyan:#00e5ff;--purple:#9366ff;--muted:#969fb2;--border:#ffffff19}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#f7f9ff;font-family:Inter,"IBM Plex Sans Thai",sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;color:inherit}
+.nav{height:72px;position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:0 6%;background:#070910ce;backdrop-filter:blur(22px);border-bottom:1px solid var(--border)}
+.brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:1px}.brand b{color:var(--cyan)}.brand-icon{display:grid;place-items:center;width:37px;height:37px;border:1px solid #00e5ff70;border-radius:12px;color:var(--cyan);background:#00e5ff15}
+.links{display:flex;align-items:center;gap:27px}.links a,.lang{font-size:12px;color:var(--muted)}.links a:hover,.links .active{color:var(--cyan)}.lang{background:#ffffff08;border:1px solid var(--border);padding:9px 12px;border-radius:12px;cursor:pointer}.menu{display:none;background:transparent;border:1px solid var(--border);border-radius:10px;padding:8px}
+.shell{width:min(1120px,88%);margin:auto}
+.hero{padding:160px 0 60px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:80px 15% auto;height:280px;border-radius:50%;background:#00e5ff15;filter:blur(70px)}
+.label{color:var(--cyan);font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:20px;position:relative}
+h1{font-size:clamp(44px,7vw,80px);line-height:1.15;letter-spacing:-2px;position:relative}
+.gradient{color:transparent;background:linear-gradient(100deg,#fff,var(--cyan),#b7a3ff);background-clip:text}
+.hero p{font-size:14px;line-height:2;color:var(--muted);max-width:650px;margin:23px auto;position:relative}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 21px;border-radius:13px;background:linear-gradient(110deg,var(--cyan),#a3f5ff);color:#071018;font-size:12px;font-weight:800;transition:.3s;position:relative}
+.btn:hover{transform:translateY(-4px);box-shadow:0 0 35px #00e5ff45}
+.section{padding:55px 0 100px}
+.head{text-align:center;margin-bottom:35px}
+.head h2{font-size:clamp(27px,4vw,43px)}
+.head p{color:var(--muted);font-size:13px;line-height:2;margin-top:12px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--border);border-radius:23px;overflow:hidden;background:linear-gradient(145deg,#ffffff0c,#ffffff02);transition:.35s}
+.card:hover{transform:translateY(-8px);border-color:#00e5ff70;box-shadow:0 20px 55px #00e5ff0c}
+.art{height:220px;display:grid;place-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:radial-gradient(circle,#00e5ff1a,transparent 65%),#ffffff03}
+.art:before{content:"";position:absolute;width:170px;height:170px;border:1px solid #00e5ff40;border-radius:50%;animation:spin 15s linear infinite}
+.art:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #9366ff30;border-radius:50%;animation:spin 21s linear infinite reverse}
+.art span{font-size:52px;z-index:1;transition:.4s}
+.card:hover .art span{transform:scale(1.2) rotate(-8deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.body{padding:23px}
+.badge{display:inline-block;color:var(--cyan);font-size:9px;letter-spacing:1px;margin-bottom:12px}
+.body h3{font-size:16px;margin-bottom:10px}
+.body p{font-size:12px;color:var(--muted);line-height:1.9}
+.body a{display:inline-flex;margin-top:20px;color:var(--cyan);font-size:12px}
+.note{margin-top:27px;padding:20px;border:1px solid var(--border);border-radius:16px;color:var(--muted);font-size:12px;line-height:1.9}
+.reveal{opacity:0;transform:translateY(22px);transition:.8s}.reveal.visible{opacity:1;transform:none}
+.footer{padding:30px 6%;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:10px}.footer-links{display:flex;gap:18px}.footer a:hover{color:var(--cyan)}
+@media(max-width:800px){.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav{height:66px;padding:0 5%}.menu{display:block}.links{position:absolute;top:74px;left:4%;right:4%;display:flex;flex-direction:column;gap:0;padding:10px;border:1px solid var(--border);border-radius:18px;background:#0a0d16f7;opacity:0;visibility:hidden;transition:.25s}.links.open{opacity:1;visibility:visible}.links a{padding:14px}.lang{width:100%;margin:8px 0}.shell{width:89%}.hero{padding-top:135px}.products{grid-template-columns:1fr}.art{height:185px}.footer{flex-direction:column;align-items:center;text-align:center}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="nav"><a class="brand" href="/th"><span class="brand-icon">RX</span><span>RYU <b>XP</b></span></a><button class="menu" id="menu">☰</button><nav class="links" id="links"><a href="/th">หน้าแรก</a><a href="/th/about">เกี่ยวกับ</a><a class="active" href="/th/shopee">Shopee</a><a href="/th/contact">ติดต่อ</a><button class="lang" onclick="location.href='/en/shopee'">EN ↗</button></nav></header>
+<main>
+<section class="hero shell"><div class="label reveal">RYU XP / STORE</div><h1 class="reveal">Discover the <span class="gradient">Collection.</span></h1><p class="reveal">สำรวจสินค้าและโปรเจกต์ที่เกี่ยวข้องกับ Ryu XP ได้จากหน้าร้านออนไลน์ เมื่อพร้อมเลือกซื้อ สามารถไปยังร้านค้าจริงผ่านปุ่มด้านล่าง</p><a class="btn reveal" href="https://shopee.co.th/" target="_blank" rel="noopener">เปิดร้าน Shopee ↗</a></section>
+<section class="section shell"><div class="head reveal"><h2>Explore the Store</h2><p>พื้นที่แนะนำสินค้าและผลงานดิจิทัลของ Ryu XP</p></div>
+<div class="products">
+<article class="card reveal"><div class="art"><span>✳</span></div><div class="body"><span class="badge">COLLECTION / 01</span><h3>Ryu XP Collection</h3><p>พื้นที่แนะนำสินค้าจากร้านค้า Ryu XP สามารถเปลี่ยนข้อความและรายละเอียดให้ตรงกับสินค้าจริงได้</p><a href="https://shopee.co.th/" target="_blank" rel="noopener">ดูสินค้า ↗</a></div></article>
+<article class="card reveal"><div class="art"><span>◈</span></div><div class="body"><span class="badge">COLLECTION / 02</span><h3>Digital & Accessories</h3><p>จัดแสดงสินค้าและอุปกรณ์ที่น่าสนใจ พร้อมเชื่อมต่อไปยังหน้าสินค้าบนแพลตฟอร์ม</p><a href="https://shopee.co.th/" target="_blank" rel="noopener">สำรวจเพิ่มเติม ↗</a></div></article>
+<article class="card reveal"><div class="art"><span>⌘</span></div><div class="body"><span class="badge">COLLECTION / 03</span><h3>Featured Products</h3><p>พื้นที่สำหรับสินค้าคัดสรรและรายการแนะนำจากร้านค้า</p><a href="https://shopee.co.th/" target="_blank" rel="noopener">เปิดร้านค้า ↗</a></div></article>
+</div>
+<div class="note reveal">หมายเหตุ: ลิงก์ด้านบนเป็นลิงก์ทั่วไปของ Shopee กรุณาเปลี่ยนเป็น URL ร้านค้าและ URL สินค้าจริงของคุณก่อนเผยแพร่เว็บไซต์</div>
+</section>
+</main>
+<footer class="footer"><a class="brand" href="/th"><span class="brand-icon">RX</span><span>RYU <b>XP</b></span></a><span>© <span id="year"></span> Ryu XP</span><div class="footer-links"><a href="/th">หน้าแรก</a><a href="/th/about">เกี่ยวกับ</a><a href="/th/contact">ติดต่อ</a></div></footer>
+<script>
+const $=s=>document.querySelector(s);$("#year").textContent=new Date().getFullYear();$("#menu").onclick=()=>$("#links").classList.toggle("open");
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&"IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>io.observe(e))}else document.querySelectorAll(".reveal").forEach(e=>e.classList.add("visible"));
+document.querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.background=`radial-gradient(300px circle at ${e.clientX-r.left}px ${e.clientY-r.top}px,#00e5ff13,transparent 60%),linear-gradient(145deg,#ffffff0c,#ffffff02)`}));
+</script>
+</body>
+</html>
