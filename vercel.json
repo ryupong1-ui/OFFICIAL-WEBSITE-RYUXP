@@ -12,8 +12,8 @@
       "destination": "/th/about.html"
     },
     {
-      "source": "/th/care",
-      "destination": "/th/care.html"
+      "source": "/th/shopee",
+      "destination": "/th/shopee.html"
     },
     {
       "source": "/th/contact",
@@ -24,8 +24,8 @@
       "destination": "/en/about.html"
     },
     {
-      "source": "/en/care",
-      "destination": "/en/care.html"
+      "source": "/en/shopee",
+      "destination": "/en/shopee.html"
     },
     {
       "source": "/en/contact",
