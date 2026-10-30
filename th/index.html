@@ -3,45 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8fafc">
-<meta name="description" content="RYU XP — ดูแลเว็บไซต์ พัฒนาเว็บไซต์ และสร้างประสบการณ์ดิจิทัล">
-<title>RYU XP — Digital Experiences</title>
+<meta name="theme-color" content="#070910">
+<meta name="description" content="Ryu XP — YouTube Creator, Developer และ Website Creator">
+<title>Ryu XP® — สร้างสรรค์เหนือขีดจำกัด</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#f8fafc;--card:#fff;--text:#172033;--muted:#687386;--accent:#6658e8;--line:#e6e9f0}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans Thai",system-ui,sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 7%;background:#ffffffdf;backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}.logo{font-weight:900;font-size:24px;letter-spacing:-1px}.logo span{color:var(--accent)}.links{display:flex;gap:24px;align-items:center;font-size:14px}.links a:hover,.active{color:var(--accent)}.lang{border:1px solid var(--line);padding:6px 12px;border-radius:20px}.menu{display:none;border:0;background:none;font-size:25px}.hero{padding:110px 8% 100px;min-height:570px;display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:center;background:radial-gradient(ellipse at 80% 25%,#e7e4ff 0,transparent 38%)}.eyebrow{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.13;letter-spacing:-2px;margin:18px 0}.hero h1 span{color:var(--accent)}p{color:var(--muted)}.hero p{font-size:18px;max-width:570px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:700;background:var(--accent);color:#fff;transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px #6658e833}.btn.alt{background:#fff;color:var(--text);border:1px solid var(--line)}.visual{min-height:320px;border-radius:30px;background:linear-gradient(145deg,#7468ed,#a8a1ff 55%,#e0ddff);display:grid;place-items:center;box-shadow:0 30px 70px #6658e829;animation:float 5s ease-in-out infinite}.orb{width:190px;height:190px;border-radius:48px;background:#ffffff40;border:1px solid #ffffffa0;display:grid;place-items:center;transform:rotate(-10deg);font-size:70px;color:#fff;box-shadow:inset 0 0 45px #ffffff45}@keyframes float{50%{transform:translateY(-10px)}}section.content{padding:75px 8%}.section-head{text-align:center;max-width:650px;margin:0 auto 36px}.section-head h2{font-size:clamp(28px,4vw,42px);margin:8px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{padding:28px;border:1px solid var(--line);background:var(--card);border-radius:20px;transition:.25s}.card:hover{transform:translateY(-6px);box-shadow:0 16px 40px #1720330d}.icon{font-size:28px}.card h3{margin:10px 0}.cta{margin:20px 8% 80px;padding:45px;border-radius:26px;background:#eeecff;text-align:center}.cta h2{font-size:32px;margin:0}.footer{padding:30px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.reveal{opacity:0;transform:translateY(18px);transition:.7s}.reveal.show{opacity:1;transform:none}@media(max-width:760px){.nav{padding:0 5%;height:68px}.menu{display:block}.links{display:none;position:absolute;top:68px;left:0;right:0;background:white;padding:22px 6%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.links.open{display:flex}.hero{grid-template-columns:1fr;padding:75px 6%;gap:30px}.visual{min-height:230px}.orb{width:145px;height:145px;font-size:55px}.grid{grid-template-columns:1fr}.content{padding:55px 6%}.cta{margin:10px 6% 55px;padding:30px 20px}.footer{padding:25px 6%}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+:root{--bg:#070910;--panel:#101522;--cyan:#00e5ff;--purple:#9366ff;--text:#f7f9ff;--muted:#969fb2;--border:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font-family:"IBM Plex Sans Thai",Inter,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));z-index:1000;width:0}
+#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+.nav{height:72px;position:fixed;inset:0 0 auto;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 6%;background:#070910c9;backdrop-filter:blur(24px);border-bottom:1px solid #ffffff10}
+.brand{display:flex;align-items:center;gap:10px;font-family:Inter,sans-serif;font-weight:900;letter-spacing:1px}
+.brand-icon{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:linear-gradient(135deg,#00e5ff24,#9366ff40);border:1px solid #00e5ff70;color:var(--cyan)}
+.brand b{color:var(--cyan)}
+.links{display:flex;align-items:center;gap:27px}
+.links a,.lang{font-size:12px;color:var(--muted);transition:.25s}
+.links a:hover,.links a.active{color:var(--cyan)}
+.lang{border:1px solid var(--border);padding:9px 12px;border-radius:12px;background:#ffffff08;cursor:pointer}
+.menu{display:none;border:1px solid var(--border);background:#ffffff08;border-radius:11px;width:42px;height:42px;font-size:22px}
+.shell{width:min(1120px,88%);margin:auto}
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:20px;padding-top:105px;padding-bottom:55px;position:relative}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(#000,transparent 90%);pointer-events:none}
+.content{position:relative;z-index:2}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--border);border-radius:30px;background:#ffffff08;color:#cbd3e3;font-size:10px;letter-spacing:1px;margin-bottom:25px}
+.dot{width:7px;height:7px;border-radius:50%;background:#47ffb0;box-shadow:0 0 12px #47ffb0;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(.7)}}
+.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:2px;font-family:Inter,sans-serif;margin-bottom:20px}
+h1{font-family:Inter,"IBM Plex Sans Thai",sans-serif;font-size:clamp(43px,6.2vw,76px);line-height:1.15;letter-spacing:-2px;font-weight:900}
+.line{display:block}
+.gradient{background:linear-gradient(100deg,#fff,var(--cyan),#a78bfa,#fff);background-size:250%;color:transparent;background-clip:text;animation:gradient 6s linear infinite}
+@keyframes gradient{to{background-position:250%}}
+.outline{color:transparent;-webkit-text-stroke:1px #ffffff88}
+.desc{font-size:14px;line-height:2;color:var(--muted);max-width:475px;margin-top:24px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:29px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:48px;padding:0 18px;border-radius:13px;font-size:12px;font-weight:700;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-4px)}
+.primary{color:#071018;background:linear-gradient(110deg,var(--cyan),#a0f5ff);box-shadow:0 0 25px #00e5ff20}
+.primary:hover{box-shadow:0 0 40px #00e5ff50}
+.secondary{border:1px solid var(--border);background:#ffffff06}
+.secondary:hover{border-color:var(--cyan)}
+.meta{display:flex;flex-wrap:wrap;gap:17px;margin-top:35px;color:#788399;font:9px Inter,sans-serif;letter-spacing:1.3px}
+.visual{min-height:440px;display:grid;place-items:center;position:relative;perspective:900px}
+.halo{position:absolute;width:250px;height:250px;background:linear-gradient(135deg,#00e5ff40,#9366ff35);filter:blur(65px);border-radius:50%;animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.35);opacity:.65}}
+.orbit{position:absolute;border:1px solid #ffffff20;border-radius:50%;transform:rotateX(65deg) rotate(-20deg)}
+.o1{width:265px;height:265px;animation:orbit 12s linear infinite}
+.o2{width:355px;height:355px;border-color:#9366ff44;animation:orbit 20s linear infinite reverse}
+.o3{width:430px;height:430px;border-color:#00e5ff18;animation:orbit 27s linear infinite}
+.orbit:after{content:"";position:absolute;top:50%;left:-4px;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}
+@keyframes orbit{to{transform:rotateX(65deg) rotate(340deg)}}
+.core{position:relative;z-index:2;width:180px;height:180px;border:1px solid #ffffff35;border-radius:39px;background:linear-gradient(135deg,#ffffff20,#ffffff03);box-shadow:inset 0 0 30px #ffffff08,0 30px 90px #0009,0 0 45px #00e5ff12;backdrop-filter:blur(20px);display:grid;place-items:center;animation:float 5s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes float{50%{transform:translateY(-14px) rotateY(9deg) rotateX(-4deg)}}
+.core-logo{font:900 65px Inter,sans-serif;letter-spacing:-8px;text-shadow:0 0 30px #00e5ff24}
+.core-logo span{color:var(--cyan)}
+.float-card{position:absolute;z-index:3;padding:13px 15px;display:flex;align-items:center;gap:11px;background:#111522db;border:1px solid var(--border);border-radius:15px;backdrop-filter:blur(18px);animation:float 6s ease-in-out infinite}
+.float-card strong{display:block;font:700 11px Inter,sans-serif}
+.float-card small{display:block;color:var(--muted);font-size:9px;margin-top:5px}
+.float-card i{font-style:normal;color:var(--cyan);font-size:23px}
+.float-top{top:40px;right:-3px}
+.float-bottom{bottom:48px;left:-5px;animation-delay:-3s}
+.ticker{overflow:hidden;padding:19px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ticker-track{display:flex;gap:32px;width:max-content;align-items:center;animation:marquee 28s linear infinite}
+.ticker span{font:800 11px Inter,sans-serif;letter-spacing:2px;color:#a8b0c2}
+.ticker i{font-style:normal;color:var(--cyan)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.section{padding:100px 0}
+.label{font:700 10px Inter,sans-serif;letter-spacing:2px;color:var(--cyan);margin-bottom:17px}
+.section-title{font-size:clamp(30px,4vw,48px);line-height:1.3;letter-spacing:-1px}
+.sub{font-size:13px;color:var(--muted);line-height:2;max-width:600px;margin-top:13px}
+.center{text-align:center}
+.center .sub{margin-inline:auto}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:38px}
+.card{padding:27px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(145deg,#ffffff0c,#ffffff02);position:relative;overflow:hidden;transition:transform .4s,border-color .4s}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--x,50%) var(--y,50%),#00e5ff18,transparent 55%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover{transform:translateY(-8px);border-color:#00e5ff60}
+.card:hover:before{opacity:1}
+.icon{width:47px;height:47px;display:grid;place-items:center;border-radius:14px;background:#00e5ff12;border:1px solid #00e5ff30;color:var(--cyan);font-size:22px;margin-bottom:23px}
+.card h3{font-size:17px;margin-bottom:12px}
+.card p{font-size:12px;line-height:1.9;color:var(--muted)}
+.card a{display:inline-block;color:var(--cyan);font-size:12px;margin-top:20px}
+.banner{border:1px solid var(--border);border-radius:23px;padding:38px;text-align:center;background:radial-gradient(ellipse at top,#00e5ff15,transparent 70%),#ffffff04}
+.banner h2{font-size:clamp(27px,4vw,43px)}
+.banner p{font-size:13px;line-height:2;color:var(--muted);margin:13px auto 22px;max-width:600px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.footer{padding:30px 6%;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:10px}
+.footer-links{display:flex;gap:17px;flex-wrap:wrap}
+.footer a:hover{color:var(--cyan)}
+@media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center;padding-top:130px}.desc{margin-inline:auto}.actions,.meta{justify-content:center}.visual{min-height:420px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.nav{height:66px;padding:0 5%}.menu{display:block}.links{position:absolute;top:74px;left:4%;right:4%;display:flex;flex-direction:column;gap:0;padding:10px;border:1px solid var(--border);border-radius:18px;background:#0a0d16f7;backdrop-filter:blur(25px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}.links.open{opacity:1;visibility:visible;transform:translateY(0)}.links a{padding:14px;width:100%;border-radius:10px}.lang{width:100%;margin:8px 0}.shell{width:89%}h1{font-size:clamp(39px,10.5vw,56px);letter-spacing:-1.5px}.eyebrow{font-size:8px;letter-spacing:1px}.desc{font-size:13px}.visual{min-height:350px;transform:scale(.84);margin:-5px -20px}.o1{width:245px;height:245px}.o2{width:320px;height:320px}.o3{width:385px;height:385px}.core{width:155px;height:155px}.core-logo{font-size:55px}.float-top{right:0;top:28px}.float-bottom{left:0;bottom:35px}.meta{font-size:8px;gap:12px}.section{padding:70px 0}.cards{grid-template-columns:1fr}.card{padding:23px}.banner{padding:28px 20px}.footer{justify-content:center;text-align:center;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}#particles{display:none}}
 </style>
 </head>
 <body>
+<div id="progress"></div>
+<canvas id="particles"></canvas>
+
 <header class="nav">
-<a class="logo" href="/th/">RYU<span> XP</span></a>
-<button class="menu" aria-label="เปิดเมนู" aria-expanded="false">☰</button>
-<nav class="links">
-<a class="active" href="/th/">หน้าแรก</a><a href="/th/about">เกี่ยวกับเรา</a><a href="/th/care">Website in Care</a><a href="/th/contact">ติดต่อเรา</a><a class="lang" href="/en/">EN ↗</a>
+<a class="brand" href="/th"><span class="brand-icon">RX</span><span>RYU <b>XP</b></span></a>
+<button class="menu" id="menu" aria-label="เปิดเมนู" aria-expanded="false">☰</button>
+<nav class="links" id="links">
+<a class="active" href="/th">หน้าแรก</a>
+<a href="/th/about">เกี่ยวกับ</a>
+<a href="/th/shopee">Shopee</a>
+<a href="/th/contact">ติดต่อ</a>
+<button class="lang" id="lang">EN ↗</button>
 </nav>
 </header>
+
 <main>
-<section class="hero">
-<div class="reveal"><div class="eyebrow">Digital • Design • Development</div><h1>สร้างประสบการณ์ดิจิทัลที่ <span>ดีกว่า</span></h1><p>RYU XP ช่วยให้เว็บไซต์ของคุณดูดี ใช้งานง่าย และพร้อมเติบโตไปกับธุรกิจ ด้วยงานออกแบบและการดูแลที่ใส่ใจทุกรายละเอียด</p><div class="actions"><a class="btn" href="/th/contact">เริ่มต้นพูดคุย ↗</a><a class="btn alt" href="/th/about">รู้จัก RYU XP</a></div></div>
-<div class="visual"><div class="orb">RX</div></div>
-</section>
-<section class="content">
-<div class="section-head reveal"><div class="eyebrow">What we do</div><h2>ทำให้ทุกไอเดียเป็นจริง</h2><p>ตั้งแต่เริ่มต้นออกแบบ ไปจนถึงการดูแลหลังเปิดเว็บไซต์</p></div>
-<div class="grid">
-<article class="card reveal"><div class="icon">✳️</div><h3>ออกแบบเว็บไซต์</h3><p>ดีไซน์สะอาด ทันสมัย รองรับมือถือและคอมพิวเตอร์</p></article>
-<article class="card reveal"><div class="icon">⌘</div><h3>พัฒนาเว็บไซต์</h3><p>โครงสร้างเป็นระเบียบ โหลดไว และใช้งานง่าย</p></article>
-<article class="card reveal"><div class="icon">♡</div><h3>ดูแลเว็บไซต์</h3><p>ช่วยดูแล ปรับปรุง และแก้ไขเว็บไซต์ให้พร้อมใช้งาน</p></article>
+<section class="hero shell">
+<div class="grid-bg"></div>
+<div class="content">
+<div class="pill reveal"><span class="dot"></span> กำลังสร้างสิ่งใหม่</div>
+<p class="eyebrow reveal">YOUTUBE CREATOR · DEVELOPER · CREATIVE</p>
+<h1>
+<span class="line reveal">คิดให้ไกลกว่า</span>
+<span class="line gradient reveal">สร้างให้เหนือกว่า</span>
+<span class="line outline reveal">BEYOND LIMITS.</span>
+</h1>
+<p class="desc reveal">ผมคือ Ryu XP ผู้สร้างคอนเทนต์และเว็บไซต์ เปลี่ยนไอเดียให้กลายเป็นประสบการณ์ดิจิทัลที่แตกต่าง</p>
+<div class="actions reveal">
+<a class="btn primary" href="/th/about">รู้จัก Ryu XP <span>↗</span></a>
+<a class="btn secondary" href="/th/contact">มาพูดคุยกัน</a>
+</div>
+<div class="meta reveal"><span>✳ DIGITAL CREATOR</span><span>TH / EN</span><span>RYUXP.ONLINE</span></div>
+</div>
+
+<div class="visual reveal" id="visual">
+<div class="halo"></div>
+<div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+<div class="core" id="core"><div class="core-logo">R<span>X</span></div></div>
+<div class="float-card float-top"><i>✳</i><span><strong>Creative</strong><small>Ideas into reality</small></span></div>
+<div class="float-card float-bottom"><i>&lt;/&gt;</i><span><strong>Developer</strong><small>Building the future</small></span></div>
 </div>
 </section>
-<section class="cta reveal"><h2>มีไอเดียที่อยากเริ่มต้นไหม?</h2><p>มาคุยกันเกี่ยวกับเว็บไซต์ของคุณ</p><a class="btn" href="/th/contact">ติดต่อ RYU XP ↗</a></section>
+
+<div class="ticker"><div class="ticker-track">
+<span>YOUTUBE CREATOR</span><i>✳</i><span>WEB DEVELOPMENT</span><i>✳</i><span>CREATIVE DESIGN</span><i>✳</i><span>DIGITAL EXPERIENCE</span><i>✳</i><span>RYU XP</span><i>✳</i>
+<span>YOUTUBE CREATOR</span><i>✳</i><span>WEB DEVELOPMENT</span><i>✳</i><span>CREATIVE DESIGN</span><i>✳</i><span>DIGITAL EXPERIENCE</span><i>✳</i><span>RYU XP</span><i>✳</i>
+</div></div>
+
+<section class="section shell">
+<div class="center reveal">
+<p class="label">WHAT I DO</p>
+<h2 class="section-title">เปลี่ยนไอเดียให้เป็น<br><span class="gradient">ประสบการณ์ที่แตกต่าง</span></h2>
+<p class="sub">ผสมผสานความคิดสร้างสรรค์ เทคโนโลยี และการออกแบบ เพื่อสร้างผลงานที่มีเอกลักษณ์ในแบบ Ryu XP</p>
+</div>
+<div class="cards">
+<article class="card reveal"><div class="icon">▶</div><h3>YouTube Creator</h3><p>สร้างสรรค์คอนเทนต์และวิดีโอ แบ่งปันไอเดีย ความรู้ และประสบการณ์กับผู้ชม</p><a href="https://www.youtube.com/@RyuXP" target="_blank" rel="noopener">เยี่ยมชมช่อง ↗</a></article>
+<article class="card reveal"><div class="icon">&lt;/&gt;</div><h3>Developer</h3><p>พัฒนาเว็บไซต์และเครื่องมือดิจิทัล พร้อมดีไซน์ทันสมัยและประสบการณ์ใช้งานที่ลื่นไหล</p><a href="/th/about">ดูเพิ่มเติม ↗</a></article>
+<article class="card reveal"><div class="icon">✳</div><h3>Website Creator</h3><p>ออกแบบเว็บไซต์ที่สะท้อนตัวตนของแบรนด์ รองรับทั้งมือถือ แท็บเล็ต และคอมพิวเตอร์</p><a href="/th/contact">พูดคุยเกี่ยวกับโปรเจกต์ ↗</a></article>
+</div>
+</section>
+
+<section class="section shell">
+<div class="banner reveal">
+<p class="label">LET'S CREATE</p>
+<h2>มีไอเดียดี ๆ อยู่ในใจไหม?</h2>
+<p>มาร่วมเปลี่ยนไอเดียให้กลายเป็นสิ่งที่ใช้งานได้จริง ติดต่อ Ryu XP เพื่อเริ่มต้นพูดคุยเกี่ยวกับโปรเจกต์ของคุณ</p>
+<a class="btn primary" href="/th/contact">เริ่มต้นพูดคุย ↗</a>
+</div>
+</section>
 </main>
-<footer class="footer"><span>© <span id="year"></span> RYU XP. All rights reserved.</span><span>Designed with care.</span></footer>
+
+<footer class="footer">
+<a class="brand" href="/th"><span class="brand-icon">RX</span><span>RYU <b>XP</b></span></a>
+<span>© <span id="year"></span> Ryu XP. All rights reserved.</span>
+<div class="footer-links"><a href="/th/about">เกี่ยวกับ</a><a href="/th/shopee">Shopee</a><a href="/th/contact">ติดต่อ</a><a href="https://www.youtube.com/@RyuXP" target="_blank" rel="noopener">YouTube ↗</a></div>
+</footer>
+
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
-const menu=document.querySelector(".menu"),links=document.querySelector(".links");
-menu.addEventListener("click",()=>{const open=links.classList.toggle("open");menu.setAttribute("aria-expanded",open);menu.textContent=open?"✕":"☰"});
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+(() => {
+const $=s=>document.querySelector(s);
+$("#year").textContent=new Date().getFullYear();
+
+const menu=$("#menu"),links=$("#links");
+menu.addEventListener("click",()=>{
+const open=links.classList.toggle("open");
+menu.setAttribute("aria-expanded",String(open));
+menu.textContent=open?"✕":"☰";
+});
+links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{links.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}));
+$("#lang").addEventListener("click",()=>location.href="/en");
+
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduced&&"IntersectionObserver"in window){
+const io=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+}else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+
+const progress=$("#progress");
+function scrollUpdate(){
+const max=document.documentElement.scrollHeight-innerHeight;
+progress.style.width=(max>0?scrollY/max*100:0)+"%";
+}
+addEventListener("scroll",scrollUpdate,{passive:true});scrollUpdate();
+
+document.querySelectorAll(".card").forEach(card=>{
+card.addEventListener("pointermove",e=>{
+const r=card.getBoundingClientRect();
+card.style.setProperty("--x",(e.clientX-r.left)+"px");
+card.style.setProperty("--y",(e.clientY-r.top)+"px");
+if(e.pointerType==="mouse"&&innerWidth>800){
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+card.style.transform=`perspective(800px) rotateX(${-y*4}deg) rotateY(${x*4}deg) translateY(-5px)`;
+}
+});
+card.addEventListener("pointerleave",()=>card.style.transform="");
+});
+
+const visual=$("#visual"),core=$("#core");
+visual.addEventListener("pointermove",e=>{
+if(e.pointerType!=="mouse"||innerWidth<800)return;
+const r=visual.getBoundingClientRect();
+const x=(e.clientX-r.left)/r.width-.5;
+const y=(e.clientY-r.top)/r.height-.5;
+core.style.animation="none";
+core.style.transform=`rotateY(${x*22}deg) rotateX(${-y*18}deg) translateZ(10px)`;
+});
+visual.addEventListener("pointerleave",()=>{core.style.animation="";core.style.transform=""});
+
+const canvas=$("#particles"),ctx=canvas.getContext("2d");
+let w=0,h=0,points=[];
+function resize(){
+w=canvas.width=innerWidth*devicePixelRatio;
+h=canvas.height=innerHeight*devicePixelRatio;
+canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+const count=Math.min(65,Math.floor(innerWidth/17));
+points=Array.from({length:count},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.24,vy:(Math.random()-.5)*.24,r:Math.random()*1.5+.5}));
+}
+resize();addEventListener("resize",resize);
+function draw(){
+if(!reduced){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+for(let i=0;i<points.length;i++){
+const p=points[i];p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>innerWidth)p.vx*=-1;
+if(p.y<0||p.y>innerHeight)p.vy*=-1;
+ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle="rgba(0,229,255,.55)";ctx.fill();
+for(let j=i+1;j<points.length;j++){
+const q=points[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
+if(d<115){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(0,229,255,${(1-d/115)*.12})`;ctx.stroke()}
+}
+}
+}
+requestAnimationFrame(draw);
+}
+if(!reduced)draw();
+
+})();
 </script>
 </body>
 </html>
