@@ -389,8 +389,8 @@ byId("orderForm").addEventListener("submit", async event => {
     toast("ส่งคำสั่งซื้อเรียบร้อย");
   } catch (error) {
     byId("orderStatus").textContent =
-      "ส่งคำสั่งซื้อไม่สำเร็จ: " + error.message +
-      " อาจเกิดจากการตั้งค่า Discord หรือ CORS";
+      "ส่งคำสั่งซื้อ" + error.message +
+      "";
   } finally {
     btn.disabled = false;
     btn.textContent = "ยืนยันคำสั่งซื้อ";
