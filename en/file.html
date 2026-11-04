@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070910">
+<title>Ryu XP® — Downloads</title>
+<style>
+:root{
+--bg:#070910;--cyan:#00e5ff;--purple:#9366ff;
+--muted:#969fb2;--border:#ffffff19
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+background:var(--bg);color:#f7f9ff;
+font-family:Inter,Arial,sans-serif;overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+.nav{
+height:72px;position:fixed;inset:0 0 auto;z-index:20;
+display:flex;justify-content:space-between;align-items:center;
+padding:0 6%;background:#070910ce;
+backdrop-filter:blur(22px);border-bottom:1px solid var(--border)
+}
+.brand{display:flex;gap:10px;align-items:center;font-weight:900;letter-spacing:1px}
+.brand b{color:var(--cyan)}
+.brand-icon{
+display:grid;place-items:center;width:37px;height:37px;
+border:1px solid #00e5ff70;border-radius:12px;
+color:var(--cyan);background:#00e5ff15
+}
+.links{display:flex;align-items:center;gap:27px}
+.links a,.lang{font-size:12px;color:var(--muted)}
+.links a:hover,.links .active{color:var(--cyan)}
+.lang,.menu{
+background:#ffffff08;border:1px solid var(--border);
+padding:9px 12px;border-radius:12px;cursor:pointer
+}
+.menu{display:none}
+.shell{width:min(1120px,88%);margin:auto}
+.hero{
+min-height:480px;display:grid;place-items:center;
+text-align:center;padding:145px 0 65px;position:relative
+}
+.grid-bg{
+position:absolute;inset:0;
+background-image:linear-gradient(#ffffff08 1px,transparent 1px),
+linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+background-size:52px 52px;
+mask-image:linear-gradient(#000,transparent 90%);
+pointer-events:none
+}
+.hero-content{position:relative}
+.pill{
+display:inline-flex;gap:9px;align-items:center;
+padding:9px 13px;border:1px solid var(--border);
+border-radius:30px;background:#ffffff08;
+color:#cbd3e3;font-size:10px;letter-spacing:1px;margin-bottom:25px
+}
+.dot{
+width:7px;height:7px;border-radius:50%;
+background:#47ffb0;box-shadow:0 0 12px #47ffb0;
+animation:pulse 1.5s infinite
+}
+@keyframes pulse{50%{opacity:.3;transform:scale(.7)}}
+h1{
+font-size:clamp(43px,7vw,76px);
+line-height:1.15;letter-spacing:-2px;font-weight:900
+}
+.gradient{
+color:transparent;
+background:linear-gradient(100deg,#fff,var(--cyan),#a78bfa);
+background-clip:text;background-size:200%;
+animation:gradient 6s linear infinite
+}
+@keyframes gradient{to{background-position:200%}}
+.desc{
+font-size:14px;line-height:2;color:var(--muted);
+max-width:580px;margin:22px auto
+}
+.stats{
+display:flex;justify-content:center;gap:35px;
+margin-top:30px;flex-wrap:wrap
+}
+.stat strong{display:block;font-size:23px;color:var(--cyan)}
+.stat span{font-size:10px;color:var(--muted);letter-spacing:1px}
+.section{padding:80px 0}
+.label{
+font-size:10px;letter-spacing:2px;color:var(--cyan);
+font-weight:700;margin-bottom:17px
+}
+.section-title{font-size:clamp(29px,4vw,45px)}
+.sub{font-size:13px;color:var(--muted);line-height:2;margin-top:12px}
+.toolbar{
+display:flex;justify-content:space-between;
+align-items:center;gap:15px;flex-wrap:wrap;margin-top:35px
+}
+.search{
+flex:1;min-width:220px;max-width:400px;
+background:#ffffff08;border:1px solid var(--border);
+border-radius:13px;padding:14px 17px;outline:none;font-size:12px
+}
+.search:focus{border-color:var(--cyan)}
+.categories{display:flex;gap:8px;flex-wrap:wrap}
+.cat{
+border:1px solid var(--border);background:#ffffff06;
+padding:11px 15px;border-radius:11px;font-size:11px;cursor:pointer
+}
+.cat.active,.cat:hover{
+background:#00e5ff15;border-color:#00e5ff70;color:var(--cyan)
+}
+.file-grid{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:17px;margin-top:30px
+}
+.file{
+padding:24px;border:1px solid var(--border);
+border-radius:21px;background:linear-gradient(145deg,#ffffff0c,#ffffff02);
+transition:.35s
+}
+.file:hover{
+transform:translateY(-7px);border-color:#00e5ff70;
+box-shadow:0 15px 45px #00e5ff0b
+}
+.file-top{display:flex;justify-content:space-between;align-items:center}
+.file-icon{
+width:53px;height:53px;display:grid;place-items:center;
+border-radius:15px;background:#00e5ff12;
+border:1px solid #00e5ff30;font-size:25px
+}
+.tag{
+font-size:9px;letter-spacing:1px;padding:6px 9px;
+border-radius:7px;background:#00e5ff13;color:var(--cyan);
+border:1px solid #00e5ff35
+}
+.tag.new{color:#47ffb0;background:#47ffb010}
+.tag.updated{color:#b79cff;background:#9366ff15}
+.file h3{font-size:16px;margin-top:23px}
+.file p{font-size:11px;color:var(--muted);line-height:1.9;margin-top:10px;min-height:42px}
+.file-meta{
+display:flex;gap:12px;flex-wrap:wrap;
+margin-top:18px;color:#818ba0;font-size:10px
+}
+.file-actions{display:flex;gap:9px;margin-top:23px}
+.download{
+flex:1;display:flex;justify-content:center;align-items:center;
+gap:9px;min-height:44px;border-radius:11px;
+background:linear-gradient(110deg,var(--cyan),#a0f5ff);
+color:#071018;font-size:11px;font-weight:800;transition:.3s
+}
+.download:hover{transform:translateY(-3px);box-shadow:0 0 25px #00e5ff30}
+.details{
+padding:0 14px;border:1px solid var(--border);
+background:#ffffff08;border-radius:11px;font-size:11px;cursor:pointer
+}
+.empty{
+grid-column:1/-1;text-align:center;padding:60px;
+color:var(--muted);border:1px dashed var(--border);border-radius:20px
+}
+.info{
+margin-top:60px;padding:28px;border:1px solid var(--border);
+border-radius:20px;background:#ffffff05;display:flex;gap:20px
+}
+.info-icon{font-size:28px;color:var(--cyan)}
+.info p{font-size:12px;line-height:1.9;color:var(--muted);margin-top:8px}
+.footer{
+padding:30px 6%;border-top:1px solid var(--border);
+display:flex;justify-content:space-between;align-items:center;
+gap:18px;flex-wrap:wrap;color:var(--muted);font-size:10px
+}
+.footer-links{display:flex;gap:18px}
+.modal{
+position:fixed;inset:0;z-index:50;display:none;
+place-items:center;padding:20px;background:#000b;backdrop-filter:blur(10px)
+}
+.modal.show{display:grid}
+.modal-box{
+width:min(440px,100%);padding:30px;
+border:1px solid #ffffff25;border-radius:23px;background:#101522
+}
+.modal-box h2{font-size:22px}
+.modal-box p{font-size:12px;line-height:2;color:var(--muted);margin:15px 0}
+.close{
+float:right;background:#ffffff10;border:1px solid var(--border);
+border-radius:9px;padding:7px 11px;cursor:pointer
+}
+.reveal{animation:appear .8s both}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:850px){.file-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+.nav{height:66px;padding:0 5%}
+.menu{display:block}
+.links{
+position:absolute;top:74px;left:4%;right:4%;
+display:flex;flex-direction:column;gap:0;padding:10px;
+border:1px solid var(--border);border-radius:18px;
+background:#0a0d16f7;opacity:0;visibility:hidden;transition:.25s
+}
+.links.open{opacity:1;visibility:visible}
+.links a{padding:14px;width:100%}
+.lang{width:100%;margin:8px 0}
+.shell{width:89%}
+.hero{padding-top:125px;min-height:420px}
+.file-grid{grid-template-columns:1fr}
+.section{padding:65px 0}
+.toolbar{align-items:stretch}
+.search{max-width:none;width:100%}
+.categories{overflow-x:auto;flex-wrap:nowrap;padding-bottom:7px}
+.cat{white-space:nowrap}
+.footer{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+<a class="brand" href="/en">
+<span class="brand-icon">RX</span><span>RYU <b>XP</b></span>
+</a>
+<button class="menu" id="menu">☰</button>
+<nav class="links" id="links">
+<a href="/en">Home</a>
+<a href="/en/about">About</a>
+<a class="active" href="/en/downloads">Downloads</a>
+<a href="/en/shopee">Shopee</a>
+<a href="/en/contact">Contact</a>
+<button class="lang" onclick="location.href='/th/downloads'">TH ↗</button>
+</nav>
+</header>
+
+<main>
+<section class="hero shell">
+<div class="grid-bg"></div>
+<div class="hero-content">
+<div class="pill"><span class="dot"></span> FREE DIGITAL RESOURCES</div>
+<p class="label">RYU XP · DOWNLOAD CENTER</p>
+<h1>Get Your Files.<br><span class="gradient">Go Beyond.</span></h1>
+<p class="desc">Discover software, tools and digital resources.
+Download what you need and create something amazing.</p>
+<div class="stats">
+<div class="stat"><strong id="total">0</strong><span>FILES</span></div>
+<div class="stat"><strong>FREE</strong><span>DOWNLOAD</span></div>
+<div class="stat"><strong>24/7</strong><span>ACCESS</span></div>
+</div>
+</div>
+</section>
+
+<section class="section shell">
+<p class="label">DOWNLOAD LIBRARY</p>
+<h2 class="section-title">Explore <span class="gradient">Downloads.</span></h2>
+<p class="sub">Find the tools and files you need.</p>
+
+<div class="toolbar">
+<input class="search" id="search" placeholder="⌕ Search files..." type="search">
+<div class="categories" id="categories">
+<button class="cat active" data-cat="All">All Files</button>
+<button class="cat" data-cat="Software">Software</button>
+<button class="cat" data-cat="Windows">Windows</button>
+<button class="cat" data-cat="macOS">macOS</button>
+<button class="cat" data-cat="Tools">Tools</button>
+<button class="cat" data-cat="Others">Others</button>
+</div>
+</div>
+
+<div class="file-grid" id="files"></div>
+
+<div class="info">
+<div class="info-icon">ⓘ</div>
+<div>
+<strong>Download Information</strong>
+<p>Files are provided by Ryu XP. Please verify the file source and system requirements before downloading.</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<a class="brand" href="/en"><span class="brand-icon">RX</span><span>RYU <b>XP</b></span></a>
+<span>© <span id="year"></span> Ryu XP. All rights reserved.</span>
+<div class="footer-links">
+<a href="/en">Home</a><a href="/en/about">About</a><a href="/en/contact">Contact</a>
+</div>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+<button class="close" id="close">✕</button>
+<h2 id="modalTitle"></h2>
+<p id="modalDesc"></p>
+<div id="modalMeta" class="file-meta"></div>
+<div class="file-actions">
+<a id="modalDownload" class="download" target="_blank" rel="noopener">↓ Download File</a>
+</div>
+</div>
+</div>
+
+<script>
+// ====================================
+// RYU XP FILE URL CONFIGURATION
+// แก้ไข URL ไฟล์ได้ที่นี่
+// ====================================
+
+const FILES = [
+{
+id:"001",
+name:"Ryu XP Toolkit",
+description:"Useful toolkit for everyday use.",
+category:"Software",
+version:"1.0.0",
+size:"25 MB",
+date:"2026-11-04",
+icon:"📦",
+tag:"NEW",
+url:"https://example.com/toolkit.zip"
+},
+{
+id:"002",
+name:"Windows Utility",
+description:"Useful utility for Windows users.",
+category:"Windows",
+version:"2.0",
+size:"12 MB",
+date:"2026-11-04",
+icon:"🪟",
+tag:"UPDATED",
+url:"https://example.com/windows.exe"
+},
+{
+id:"003",
+name:"macOS Utility",
+description:"Tools for macOS users.",
+category:"macOS",
+version:"1.0",
+size:"8 MB",
+date:"2026-11-04",
+icon:"",
+tag:"FREE",
+url:"https://example.com/mac.dmg"
+},
+{
+id:"004",
+name:"Developer Toolkit",
+description:"Useful resources for developers.",
+category:"Tools",
+version:"1.2",
+size:"5 MB",
+date:"2026-11-04",
+icon:"</>",
+tag:"FREE",
+url:"https://example.com/developer.zip"
+}
+];
+
+const $=s=>document.querySelector(s);
+let activeCategory="All";
+
+function render(){
+const q=$("#search").value.toLowerCase().trim();
+
+const data=FILES.filter(f=>
+(activeCategory==="All"||f.category===activeCategory)&&
+(f.name+" "+f.description+" "+f.category).toLowerCase().includes(q)
+);
+
+$("#total").textContent=FILES.length;
+
+$("#files").innerHTML=data.length?data.map(f=>`
+<article class="file reveal">
+<div class="file-top">
+<div class="file-icon">${f.icon}</div>
+<span class="tag ${f.tag.toLowerCase()}">${f.tag}</span>
+</div>
+<h3>${f.name}</h3>
+<p>${f.description}</p>
+<div class="file-meta">
+<span>◈ ${f.category}</span>
+<span>v${f.version}</span>
+<span>${f.size}</span>
+</div>
+<div class="file-meta">
+<span>Updated: ${f.date}</span>
+</div>
+<div class="file-actions">
+<a class="download" href="${safeURL(f.url)}" target="_blank" rel="noopener">
+↓ Download
+</a>
+<button class="details" onclick="showDetails('${f.id}')">Details</button>
+</div>
+</article>`).join("") :
+`<div class="empty"><strong>No files found</strong>Try another keyword.</div>`;
+}
+
+function safeURL(value){
+try{
+const u=new URL(value);
+return ["https:","http:"].includes(u.protocol)?u.href:"#";
+}catch{return "#";}
+}
+
+function showDetails(id){
+const f=FILES.find(x=>x.id===id);
+if(!f)return;
+$("#modalTitle").textContent=f.name;
+$("#modalDesc").textContent=f.description;
+$("#modalMeta").textContent=`${f.category} · Version ${f.version} · ${f.size} · ${f.date}`;
+$("#modalDownload").href=safeURL(f.url);
+$("#modal").classList.add("show");
+}
+
+$("#search").addEventListener("input",render);
+
+$("#categories").addEventListener("click",e=>{
+const b=e.target.closest("[data-cat]");
+if(!b)return;
+activeCategory=b.dataset.cat;
+document.querySelectorAll(".cat").forEach(x=>
+x.classList.toggle("active",x===b));
+render();
+});
+
+$("#menu").onclick=()=>$("#links").classList.toggle("open");
+$("#close").onclick=()=>$("#modal").classList.remove("show");
+$("#modal").onclick=e=>{
+if(e.target.id==="modal")$("#modal").classList.remove("show");
+};
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")$("#modal").classList.remove("show");
+});
+$("#year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
