@@ -24,6 +24,10 @@
       "destination": "/en/about.html"
     },
     {
+      "source": "/en/downloads",
+      "destination": "/en/file"
+    },
+    {
       "source": "/en/shopee",
       "destination": "/en/shopee.html"
     },
